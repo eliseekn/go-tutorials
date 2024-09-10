@@ -1,20 +1,19 @@
 package server
 
 import (
-	"fmt"
+	"errors"
 	"http-server/routes"
 	"net/http"
 )
 
-func Serve() {
+func Serve(port string) error {
 	routes.Init()
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":" + port, nil)
 
-	if err == nil {
-		fmt.Println("Failed to start server on port 8080")
-		return
+	if err != nil {
+		return errors.New("failed to start server on port " + port)
 	}
 
-	fmt.Println("Server started on port 8080...")
+	return nil
 }

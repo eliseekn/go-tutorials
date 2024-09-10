@@ -53,7 +53,7 @@ func Remove(id int) ([]types.ToDo, error) {
 	return newTodoList, nil
 }
 
-func MarkAsCompleted(id int) ([]types.ToDo, error) {
+func Update(id int) ([]types.ToDo, error) {
 	todoList, err := List()
 	if err != nil {
 		return nil, err

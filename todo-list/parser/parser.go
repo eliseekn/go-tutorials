@@ -9,7 +9,7 @@ import (
 )
 
 func Parse(args []string) ([]types.ToDo, error) {
-	if len(args) == 1 {
+	if len(args) < 2 {
 		return nil, errors.New("not enough arguments")
 	}
 
@@ -65,13 +65,13 @@ func Parse(args []string) ([]types.ToDo, error) {
 		return todoList, nil
 	}
 
-	if args[1] == "--completed" {
+	if args[1] == "--update" || args[1] == "-u" {
 		id, err := strconv.Atoi(args[2])
 		if err != nil {
 			return nil, err
 		}
 
-		todoList, err := todolist.Remove(id)
+		todoList, err := todolist.Update(id)
 		if err != nil {
 			return nil, err
 		}

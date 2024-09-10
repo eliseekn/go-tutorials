@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestHello(t *testing.T) {
+func Test_Can_Display_Hello(t *testing.T) {
 	value := "eliseekn"
 	expected := regexp.MustCompile(`\b` + value + `\b`)
 	message, err := Hello(value)
