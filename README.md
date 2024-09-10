@@ -8,3 +8,4 @@ Suit of projects to learn go.
 - http-client
 - http-server
 - todo-list
+- calculator
