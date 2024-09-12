@@ -2,13 +2,32 @@ package io
 
 import (
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"todo-list/types"
 )
 
+func Filename() string {
+	dir, err := filepath.Abs("./")
+	if err != nil {
+		panic(err)
+	}
+
+	filename := dir + "/todos.txt"
+
+	_, err = os.OpenFile(filename, os.O_CREATE|os.O_RDONLY, 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	return filename
+}
+
 func ReadFile() ([]types.ToDo, error) {
-	data, err := os.ReadFile("/tmp/todos.txt")
+	filename := Filename()
+
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
@@ -43,6 +62,7 @@ func ReadFile() ([]types.ToDo, error) {
 
 func SaveFile(todoList []types.ToDo) error {
 	var lines []string
+	filename := Filename()
 
 	for _, todo := range todoList {
 		line := strconv.Itoa(todo.Id) + "," + todo.Text + "," + strconv.FormatBool(todo.Completed)
@@ -51,9 +71,10 @@ func SaveFile(todoList []types.ToDo) error {
 
 	data := strings.Join(lines, "\n")
 
-	return os.WriteFile("/tmp/todos.txt", []byte(data), 0644)
+	return os.WriteFile(filename, []byte(data), 0644)
 }
 
 func DeleteFile() error {
-	return os.Remove("/tmp/todos.txt")
+	filename := Filename()
+	return os.Remove(filename)
 }
