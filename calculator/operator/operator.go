@@ -1,23 +1,26 @@
 package operator
 
-import "calculator/utils"
+import (
+	"calculator/utils"
+	"fmt"
+)
 
-func Sum(args []string) float32 {
+func Sum(args []string) {
 	result := utils.Float(args[1]) + utils.Float(args[3])
-	return result
+	fmt.Println(result)
 }
 
-func Substract(args []string) float32 {
+func Substract(args []string) {
 	result := utils.Float(args[1]) - utils.Float(args[3])
-	return result
+	fmt.Println(result)
 }
 
-func Multiply(args []string) float32 {
+func Multiply(args []string) {
 	result := utils.Float(args[1]) * utils.Float(args[3])
-	return result
+	fmt.Println(result)
 }
 
-func Divide(args []string) float32 {
+func Divide(args []string) {
 	result := utils.Float(args[1]) / utils.Float(args[3])
-	return result
+	fmt.Println(result)
 }

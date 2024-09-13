@@ -7,7 +7,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, req *http.Request) {
-	res := types.Response{
+	res := &types.Response{
 		Status:  "success",
 		Message: "OK",
 	}

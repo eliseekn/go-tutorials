@@ -7,7 +7,7 @@ import (
 )
 
 func Test_Can_Connect_To_HTTP_Server_And_Get_JSON_Response(t *testing.T) {
-	expected := types.Response{
+	expected := &types.Response{
 		Status:  "success",
 		Message: "OK",
 	}
