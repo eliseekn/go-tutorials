@@ -9,4 +9,3 @@ Suit of projects to learn go.
 - http-server
 - todo-list
 - calculator
-- goravel-blog
