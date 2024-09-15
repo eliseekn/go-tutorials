@@ -2,6 +2,7 @@ package main
 
 import (
 	"calculator/operator"
+	"fmt"
 	"log"
 	"os"
 )
@@ -15,13 +16,17 @@ func main() {
 
 	switch args[2] {
 	case "+":
-		operator.Sum(args)
+		result := operator.Sum(args)
+		fmt.Println(result)
 	case "-":
-		operator.Substract(args)
+		result := operator.Substract(args)
+		fmt.Println(result)
 	case "x":
-		operator.Multiply(args)
+		result := operator.Multiply(args)
+		fmt.Println(result)
 	case "/":
-		operator.Divide(args)
+		result, _ := operator.Divide(args)
+		fmt.Println(result)
 	default:
 		log.Fatalf("invalid operator: %v", args[2])
 	}

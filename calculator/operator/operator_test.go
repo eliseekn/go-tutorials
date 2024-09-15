@@ -27,8 +27,20 @@ func Test_Can_Multiply(t *testing.T) {
 }
 
 func Test_Can_Divide(t *testing.T) {
-	result := operator.Divide([]string{"", "4", "/", "2"})
+	result, err := operator.Divide([]string{"", "4", "/", "2"})
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	if result != 2 {
+		t.FailNow()
+	}
+}
+
+func Test_Can_Not_Divide_By_Zero(t *testing.T) {
+	_, err := operator.Divide([]string{"", "4", "/", "0"})
+
+	if err == nil {
 		t.FailNow()
 	}
 }
