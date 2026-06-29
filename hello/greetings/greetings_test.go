@@ -15,7 +15,7 @@ func Test_Can_Display_Hello(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if !expected.MatchString(message) || err != nil {
+	if !expected.MatchString(message) {
 		t.FailNow()
 	}
 }

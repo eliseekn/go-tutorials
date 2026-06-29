@@ -8,6 +8,10 @@ import (
 
 func main() {
 	message, err := greetings.Hello("eliseekn")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	messages, err := greetings.MultipleHello([]string{"eliseekn", "wrh1d3"})
 	if err != nil {
 		log.Fatal(err)
